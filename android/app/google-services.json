@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "594069834655",
+    "project_id": "kakao-clone-a4be5",
+    "storage_bucket": "kakao-clone-a4be5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594069834655:android:dc2252fa92e8404aca0baa",
+        "android_client_info": {
+          "package_name": "com.kakao.flutter_kakao_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594069834655-33g53i77d0mveh9ffu632chjojdvvtos.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn_fqJu9vT9JzMknwIFTgwSpNg4KoXjsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594069834655-33g53i77d0mveh9ffu632chjojdvvtos.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
