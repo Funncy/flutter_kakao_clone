@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {},
                 child: Container(
                   width: 300,
+                  height: 45,
                   child: Row(
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
