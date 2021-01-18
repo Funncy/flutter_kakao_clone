@@ -1,11 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_kakao_clone/models/user_model.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // 유저 상태 Stream
-  Stream<User> get user {
-    return _auth.authStateChanges();
+  Stream<UserModel> get user {
+    return _auth
+        .authStateChanges()
+        .map((user) => UserModel(uid: user.uid, email: user.email));
   }
 
   //이메일 로그인
@@ -38,5 +41,16 @@ class AuthService {
     }
 
     print("success");
+  }
+
+  //로그아웃
+  void signOut() async {
+    try {
+      await _auth.signOut();
+    } on FirebaseAuthException catch (e) {
+      print("SignOut Error e.code=${e.code}");
+      return;
+    }
+    print("SignOut");
   }
 }

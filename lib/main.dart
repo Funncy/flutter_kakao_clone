@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_kakao_clone/screen/authenticate/auth_wrapper.dart';
 import 'package:flutter_kakao_clone/screen/authenticate/login_screen.dart';
 import 'package:flutter_kakao_clone/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
                 Provider<AuthViewModel>(
                   create: (_) => AuthViewModel(),
                 )
-              ], child: LoginScreen());
+              ], child: AuthWrapper());
             }
 
             // Otherwise, show something whilst waiting for initialization to complete

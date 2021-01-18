@@ -1,16 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_kakao_clone/models/user_model.dart';
 import 'package:flutter_kakao_clone/services/auth_service.dart';
 
 class AuthViewModel {
   final _authService = AuthService();
 
-  //유저 생성
-  // User _userFromFirebaseUser(_auth.currentUser user) {
-  // return user != null ? User(uid: uer.uid) : null;
-  // }
-
   // 유저 로그인 상태 Stream
-  Stream<User> get user {
+  Stream<UserModel> get user {
     return _authService.user;
   }
 
@@ -30,5 +26,9 @@ class AuthViewModel {
     password = password.trim();
 
     _authService.emailSignUp(email, password);
+  }
+
+  void logOut() {
+    _authService.signOut();
   }
 }
