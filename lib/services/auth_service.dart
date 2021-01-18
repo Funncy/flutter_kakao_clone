@@ -3,12 +3,20 @@ import 'package:flutter_kakao_clone/models/user_model.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  var userModel;
 
   // 유저 상태 Stream
   Stream<UserModel> get user {
-    return _auth
-        .authStateChanges()
-        .map((user) => UserModel(uid: user.uid, email: user.email));
+    return _auth.authStateChanges().map((user) {
+      userModel = UserModel(uid: user.uid, email: user.email);
+      return userModel;
+    });
+  }
+
+  //유저 이메일
+  String getUserEmail() {
+    if (userModel != null) return userModel.email;
+    return "unknown";
   }
 
   //이메일 로그인

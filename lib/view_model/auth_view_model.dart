@@ -4,10 +4,14 @@ import 'package:flutter_kakao_clone/services/auth_service.dart';
 
 class AuthViewModel {
   final _authService = AuthService();
+  String userEmail;
 
   // 유저 로그인 상태 Stream
   Stream<UserModel> get user {
-    return _authService.user;
+    return _authService.user.map((user) {
+      userEmail = user.email;
+      return user;
+    });
   }
 
   //이메일 로그인
@@ -28,6 +32,7 @@ class AuthViewModel {
     _authService.emailSignUp(email, password);
   }
 
+  //로그아웃
   void logOut() {
     _authService.signOut();
   }

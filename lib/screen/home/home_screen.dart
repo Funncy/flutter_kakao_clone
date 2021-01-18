@@ -12,7 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("${context.watch<AuthViewModel>().userEmail}"),
         actions: [
           IconButton(
               icon: Icon(Icons.exit_to_app),
@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
               })
         ],
       ),
+      body: Container(),
     );
   }
 }
