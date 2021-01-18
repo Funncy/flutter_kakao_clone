@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>594069834655-49cl88kk3hh0vrv62pmc7brq31nf8acn.apps.googleusercontent.com</string>
+	<string>502344408321-kl740pp97b07v25e924acufaqfjvnps3.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.594069834655-49cl88kk3hh0vrv62pmc7brq31nf8acn</string>
+	<string>com.googleusercontent.apps.502344408321-kl740pp97b07v25e924acufaqfjvnps3</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA7mWQDsw9FuMUVdk5xSTtZSoQpXqk_n1A</string>
+	<string>AIzaSyDXqkeaWfpygVeC8rJasLfYtRqn2lX7ldo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>594069834655</string>
+	<string>502344408321</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.kakao.flutterKakaoClone</string>
 	<key>PROJECT_ID</key>
-	<string>kakao-clone-a4be5</string>
+	<string>kakao-clone-53515</string>
 	<key>STORAGE_BUCKET</key>
-	<string>kakao-clone-a4be5.appspot.com</string>
+	<string>kakao-clone-53515.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:594069834655:ios:c36dd9422f79d683ca0baa</string>
+	<string>1:502344408321:ios:6cd9dd05dc8d77c549cf00</string>
 </dict>
 </plist>
