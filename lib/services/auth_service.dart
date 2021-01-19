@@ -15,8 +15,9 @@ class AuthService {
 
   //유저 이메일
   String getUserEmail() {
-    if (userModel != null) return userModel.email;
-    return "unknown";
+    return _auth.currentUser.email;
+    // if (userModel != null) return userModel.email;
+    // return "unknown";
   }
 
   //이메일 로그인
