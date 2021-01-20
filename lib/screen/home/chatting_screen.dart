@@ -66,12 +66,15 @@ class _ChattingScreenState extends State<ChattingScreen> {
                           () => scrollController.jumpTo(
                               scrollController.position.maxScrollExtent));
 
-                      return ListView.builder(
-                        controller: scrollController,
-                        itemCount: chats.length,
-                        itemBuilder: (context, index) {
-                          return chats[index];
-                        },
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: ListView.builder(
+                          controller: scrollController,
+                          itemCount: chats.length,
+                          itemBuilder: (context, index) {
+                            return chats[index];
+                          },
+                        ),
                       );
                   }
                 }),
