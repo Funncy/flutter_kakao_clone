@@ -33,9 +33,9 @@ class ChatViewModel with ChangeNotifier {
       ScrollController scrollController) async {
     var userEmail = _authService.getUserEmail();
     var did = await _chatService.sendChat(userEmail, friendEmail, content);
-    chats.add(new ChatModel(did: did, uid: userEmail, content: content));
+    // chats.add(new ChatModel(did: did, uid: userEmail, content: content));
 
-    scrollController.animateTo(scrollController.position.maxScrollExtent,
-        duration: Duration(seconds: 1), curve: Curves.ease);
+    // scrollController.animateTo(scrollController.position.maxScrollExtent,
+    //     duration: Duration(seconds: 1), curve: Curves.ease);
   }
 }
