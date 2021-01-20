@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kakao_clone/models/user_model.dart';
 import 'package:flutter_kakao_clone/screen/authenticate/login_screen.dart';
-import 'package:flutter_kakao_clone/screen/home/home_screen.dart';
+import 'package:flutter_kakao_clone/screen/friends/friends_screen.dart';
+import 'package:flutter_kakao_clone/screen/home/chatting_screen.dart';
 import 'package:flutter_kakao_clone/view_model/auth_view_model.dart';
 import 'package:flutter_kakao_clone/widget/Error.dart';
 import 'package:flutter_kakao_clone/widget/Loading.dart';
@@ -25,7 +26,7 @@ class AuthWrapper extends StatelessWidget {
             case ConnectionState.active:
             case ConnectionState.done:
               if (snapshot.data != null) {
-                return HomeScreen();
+                return FriendsScreen();
               }
               return LoginScreen();
             case ConnectionState.none:

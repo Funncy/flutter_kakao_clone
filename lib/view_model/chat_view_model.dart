@@ -11,8 +11,8 @@ class ChatViewModel with ChangeNotifier {
   List<ChatModel> chats = new List<ChatModel>();
 
   //전체 채팅 내용 가져오기
-  Stream<QuerySnapshot> getChatsStream() {
-    return _chatService.getChatsStream();
+  Stream<QuerySnapshot> getChatsStream(String friendEmail) {
+    return _chatService.getChatsStream(friendEmail);
   }
 
   List<ChatModel> getChatList(List<QueryDocumentSnapshot> docs) {
@@ -29,9 +29,10 @@ class ChatViewModel with ChangeNotifier {
   }
 
   //채팅 보내기
-  void sendChat(String content, ScrollController scrollController) async {
+  void sendChat(String friendEmail, String content,
+      ScrollController scrollController) async {
     var userEmail = _authService.getUserEmail();
-    var did = await _chatService.sendChat(userEmail, content);
+    var did = await _chatService.sendChat(userEmail, friendEmail, content);
     chats.add(new ChatModel(did: did, uid: userEmail, content: content));
 
     scrollController.animateTo(scrollController.position.maxScrollExtent,

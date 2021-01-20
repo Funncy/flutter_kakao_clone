@@ -6,6 +6,10 @@ class AuthViewModel {
   final _authService = AuthService();
   String userEmail;
 
+  String getCurrentUserEmail() {
+    return _authService.getCurrentUserEmail();
+  }
+
   // 유저 로그인 상태 Stream
   Stream<UserModel> get user {
     return _authService.user.map((user) {

@@ -10,12 +10,15 @@ import 'package:flutter_kakao_clone/view_model/chat_view_model.dart';
 import 'package:flutter_kakao_clone/widget/Loading.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class ChattingScreen extends StatefulWidget {
+  final friendEmail;
+
+  ChattingScreen({@required this.friendEmail});
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ChattingScreenState createState() => _ChattingScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ChattingScreenState extends State<ChattingScreen> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final sendTextController = TextEditingController();
   final scrollController = ScrollController();
@@ -30,14 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("${context.watch<AuthViewModel>().userEmail}"),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.exit_to_app),
-              onPressed: () {
-                context.read<AuthViewModel>().logOut();
-              })
-        ],
+        title: Text("${widget.friendEmail}"),
+        actions: [],
       ),
       body: Column(
         children: [
@@ -45,7 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
             width: size.width,
             height: size.height - 200,
             child: StreamBuilder<QuerySnapshot>(
-                stream: context.watch<ChatViewModel>().getChatsStream(),
+                stream: context
+                    .watch<ChatViewModel>()
+                    .getChatsStream(widget.friendEmail),
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
@@ -69,52 +68,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       return ListView.builder(
                         controller: scrollController,
-                        itemCount: snapshot.data.docs.length,
+                        itemCount: chats.length,
                         itemBuilder: (context, index) {
                           return chats[index];
                         },
                       );
                   }
                 }),
-
-            // SingleChildScrollView(
-            //     controller: scrollController,
-            //     scrollDirection: Axis.vertical,
-            //     child: Column(
-            //       mainAxisAlignment: MainAxisAlignment.start,
-            //       children: [
-            //         SizedBox(
-            //           width: size.width,
-            //           height: 20,
-            //         ),
-            //         StreamBuilder<QuerySnapshot>(
-            //           stream: context.watch<ChatViewModel>().getChatsStream(),
-            //           builder: (context, snapshot) {
-            //             switch (snapshot.connectionState) {
-            //               case ConnectionState.waiting:
-            //                 return Loading();
-            //                 break;
-            //               case ConnectionState.none:
-            //               case ConnectionState.active:
-            //               case ConnectionState.done:
-            //                 return Column(
-            //                   children: [
-            //                     ...context
-            //                         .watch<ChatViewModel>()
-            //                         .getChatList(snapshot.data.docs)
-            //                         .map((chat) => ChatWidget(
-            //                               chatModel: chat,
-            //                             ))
-            //                         .toList()
-            //                   ],
-            //                 );
-            //                 break;
-            //             }
-            //             return Container();
-            //           },
-            //         )
-            //       ],
-            //     )),
           ),
           Center(
             child: Container(
@@ -137,7 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             icon: Icon(Icons.send),
                             onPressed: () {
                               context.read<ChatViewModel>().sendChat(
-                                  sendTextController.text, scrollController);
+                                  widget.friendEmail,
+                                  sendTextController.text,
+                                  scrollController);
                             }),
                       ),
                     ],

@@ -4,6 +4,7 @@ import 'package:flutter_kakao_clone/screen/authenticate/auth_wrapper.dart';
 import 'package:flutter_kakao_clone/screen/authenticate/login_screen.dart';
 import 'package:flutter_kakao_clone/view_model/auth_view_model.dart';
 import 'package:flutter_kakao_clone/view_model/chat_view_model.dart';
+import 'package:flutter_kakao_clone/view_model/user_list_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -40,7 +41,8 @@ class MyApp extends StatelessWidget {
                 Provider<AuthViewModel>(
                   create: (_) => AuthViewModel(),
                 ),
-                ChangeNotifierProvider(create: (_) => ChatViewModel())
+                ChangeNotifierProvider(create: (_) => ChatViewModel()),
+                ChangeNotifierProvider(create: (_) => UserListViewModel()),
               ], child: AuthWrapper());
             }
 

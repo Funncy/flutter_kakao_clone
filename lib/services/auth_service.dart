@@ -1,9 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_kakao_clone/models/user_model.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   var userModel;
+
+  //현재 유저
+  String getCurrentUserEmail() {
+    return _auth.currentUser.email;
+  }
 
   // 유저 상태 Stream
   Stream<UserModel> get user {
@@ -44,7 +51,12 @@ class AuthService {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
+      // User정보 Firestore에 추가 저장 (친구 목록 용)
+      _firestore.collection('users').add({"userEmail": email});
     } on FirebaseAuthException catch (e) {
+      print("Error e.code=${e.code}");
+      return;
+    } on FirebaseException catch (e) {
       print("Error e.code=${e.code}");
       return;
     }

@@ -11,7 +11,7 @@ class ChatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var auth = Provider.of<AuthViewModel>(context);
-    return chatModel.uid == auth.userEmail
+    return chatModel.uid == auth.getCurrentUserEmail()
         ? RightChat(content: chatModel.content)
         : LeftChat(content: chatModel.content);
   }
