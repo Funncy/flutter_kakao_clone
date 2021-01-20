@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kakao_clone/models/user_model.dart';
 import 'package:flutter_kakao_clone/screen/authenticate/login_screen.dart';
@@ -8,7 +9,17 @@ import 'package:flutter_kakao_clone/widget/Error.dart';
 import 'package:flutter_kakao_clone/widget/Loading.dart';
 import 'package:provider/provider.dart';
 
-class AuthWrapper extends StatelessWidget {
+class AuthWrapper extends StatefulWidget {
+  @override
+  _AuthWrapperState createState() => _AuthWrapperState();
+}
+
+class _AuthWrapperState extends State<AuthWrapper> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var auth = Provider.of<AuthViewModel>(context);
